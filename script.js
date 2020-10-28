@@ -8,15 +8,29 @@ window.addEventListener("load", function() {
       let cargoMass = document.querySelector("input[name=cargoMass]");
       if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.Value === "") {
          alert("All fields are required!");
-         event.preventDefault();
       }else if (isNaN(pilotName.value)===false || isNaN(copilotName.value)===false ||isNaN(fuelLevel.value)=== true|| isNaN(cargoMass.value)=== true){
          alert("Please ensure all fields have the correct values.");
-         event.preventDefault();
       }else{
-         document.getElementsByClassName("#faultyItems").innerHTML = "visible";
-         document.getElementById("pilotStatus").innerHTML = `${pilotName} is ready.`;
-         document.getElementById("copilotStatus").innerHTML = `${copilotName} is ready.`;
-      }
+         document.getElementById("faultyItems") = "visible";
+         document.pilotStatus.innerHTML = `${pilotName} is ready.`;
+         document.copilotStatus.innerHTML = `${copilotName} is ready.`;
+         if (document.fuelLevel.innerHTML < 10000){
+            document.getElementById("faultyItems") = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+            document.getElementById("launchStatus").style.color = "red";
+         }else{
+            document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch.";
+            document.getElementById("launchStatus").style.color = "green";
+         };
+         if (ducument.cargoMass.innerHTML > 10000){
+            document.querySelector("#faultyItems") = "visible";
+            document.getElementById("launchStatus").innerHTML = "Shuttle not ready for launch";
+            document.getElementById("launchStatus").style.color = "red";
+         }else{
+            document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch";
+            document.getElementById("launchStatus").style.color = "green";
+         };
+      };
       
    });
 

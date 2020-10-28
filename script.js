@@ -9,8 +9,8 @@ window.addEventListener("load", function() {
       if (pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.Value === "") {
          alert("All fields are required!");
          event.preventDefault();
-      }else if (isNaN(fuelLevel.value)=== true || isNaN(cargoMass.value)===true){
-         alert("Fuel Level and Cargo Mass must be numbers.");
+      }else if (isNaN(pilotName.value)===false || isNaN(copilotName.value)===false ||isNaN(fuelLevel.value)=== true|| isNaN(cargoMass.value)=== true){
+         alert("Please ensure all fields have the correct values.");
          event.preventDefault();
       }else{
          document.getElementsByClassName("#faultyItems").innerHTML = "visible";

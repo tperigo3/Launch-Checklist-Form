@@ -33,32 +33,25 @@ window.addEventListener("load", function() {
          }else{
             document.getElementById("launchStatus").innerHTML = "Shuttle is ready for launch.";
             document.getElementById("launchStatus").style.color = "green";
-         }
-      };
-      
-   });
-
-// This block of code shows how to format the HTML once you fetch some planetary JSON!
-
-   fetch('https://handlers.education.launchcode.org/static/planets.json')
-       .then(function(response)
-           {return response.json()}
-       ).then(function(json){
-           const container = document.getElementById('container');
-           let planets = '';
-           for(planet of json){
-               planets += `
-                  <h2>Mission Destination</h2>
+         }   
+      }
+     
+         fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
+            response.json().then(function(json) {
+               const missionLocation = document.getElementById("missionLocation");
+                  missionLocation.innerHTML =`
+                     <h2>Mission Destination</h2> 
                      <ol>
-                        <li>Name: ${json.name}</li>
-                        <li>Diameter: ${json.diameter}</li>
-                        <li>Star: ${json.star}</li>
-                        <li>Distance from Earth: ${json.distance}</li>
-                        <li>Number of Moons: ${json.moons}</li>
+                        <li>Name: ${json[0].name}</li>
+                        <li>Diameter: ${json[0].diameter}</li>
+                        <li>Star: ${json[0].star}</li>
+                        <li>Distance from Earth: ${json[0].distance}</li>
+                        <li>Number of Moons: ${json[0].moons}</li>
                      </ol>
-                  <img src="${json[1].image}">
-               `;   
-           };
-           container.innerHTML = planets;
-       });     
-   });
+                     <img src="${json[0].image}">
+                  `;
+               });
+            });
+         });
+      });
+  
